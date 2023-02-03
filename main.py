@@ -16,16 +16,14 @@ running = True
 #main loop
 
 def main():
-    pressedKeys = []
-    PlayerVelocityX = 0.0
-    PlayerVelocityY = 0.0
+
     while(running):
 
 
         if(pygame.key.get_focused): #only do main loop while window focused
             pressedKeys = getInput() #actions to perform
             for action in pressedKeys:
-            pass    
+                pass    
                 
             
         else:
@@ -33,3 +31,5 @@ def main():
 
 if(__name__ == "__main__"):
     main()
+
+pygame.quit()
