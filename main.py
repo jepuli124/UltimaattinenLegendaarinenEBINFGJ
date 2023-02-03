@@ -5,15 +5,6 @@ Screen = [1920, 1080]
 
 #älä muuta, kaikki kusee sitte
 #frames per second
-CHARACTER_HEIGTH = 60 #pixels
-PLAYER_MOACCELERATION = 0.67 #pixels / tick^2
-PLAYER_MAX_X_VELOCITY = 10.0 #pixels / tick
-PLAYER_MAX_Y_VELOCITY = 20.0 #pixels / tick
-
-PLAYER_VELOCITY_X = 0.0
-PLAYER_VELOCITY_Y = 0.0
-PLAYER_POS_X = 0.0
-PLAYER_POS_Y = 0.0
 
 POSSIBLE_ACTIONS = {"Up": moveUp(), "Down": moveDown(), "Left": moveLeft(), "Right": moveRight(), "Jump": jump(), "Quit": ()}
 
@@ -33,7 +24,6 @@ def main():
                 RUNNING = False
 
         if(pygame.key.get_focused): #only do main loop while window focused
-
             PressedKeys = getInput() #actions to perform
             actionDoer()
         else:
