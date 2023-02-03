@@ -1,10 +1,22 @@
 import pygame
 
-def actionDoer(Actions):
-    global POSSIBLE_ACTIONS
+def actionDoer(Actions, Player):
     for Action in Actions:
-        if Action in POSSIBLE_ACTIONS:
-            POSSIBLE_ACTIONS[Action]
+        if(Action == "Up"):
+            Player = moveUp(Player)
+        elif(Action == "Down"):
+            Player = moveDown(Player)
+        elif(Action == "Left"):
+            Player = moveLeft(Player)
+        elif(Action == "Right"):
+            Player = moveRight(Player)
+        elif(Action == "Jump"):
+            Player = jump(Player)
+        elif(Action == "quit"):
+            pygame.quit()
+    return Player
+
+            
     return
 
 def getInput():
@@ -29,7 +41,7 @@ def mouse():
     e1 = pygame.mouse.get_pos()
 
 def moveUp():
-
+    global Player
     Player.VelocityY -= Player.playerMovementAcceleration
     return
 

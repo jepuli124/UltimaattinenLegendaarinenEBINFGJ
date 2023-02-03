@@ -8,20 +8,16 @@ Screen = [1920, 1080]
 #älä muuta, kaikki kusee sitte
 #frames per second
 
-POSSIBLE_ACTIONS = {"Up": moveUp(), "Down": moveDown(), "Left": moveLeft(), "Right": moveRight(), "Jump": jump(), "Quit": ()}
-Player = ENTITY(0.0, 0.0, 32, 60, 0.67, 0.0, 0.0)
-
 RUNNING = True
 
 #main loop
-
 def main():
     Window = pygame.display.set_mode((Screen[0], Screen[1]))
     PressedKeys = []
     clock = pygame.time.Clock()
     MAX_FPS = 30
-    
-    print(Player)
+    Player = ENTITY(0.0, 0.0, 32, 60, 0.67, 0.0, 0.0)
+
     while(RUNNING):
 
         for event in pygame.event.get():
@@ -30,7 +26,7 @@ def main():
 
         if(pygame.key.get_focused): #only do main loop while window focused
             PressedKeys = getInput() #actions to perform
-            actionDoer(PressedKeys)
+            actionDoer(PressedKeys, Player)
 
         else:
             pass
