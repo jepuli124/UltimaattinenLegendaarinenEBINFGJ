@@ -29,17 +29,28 @@ def mouse():
     e1 = pygame.mouse.get_pos()
 
 def moveUp():
-    PlayerAcceleration = 1
+    global Player
+    Player.VelocityY -= Player.playerMovementAcceleration
+    return
 
 def moveDown():
-    PlayerAcceleration = 1
+    global Player
+    Player.VelocityY += Player.playerMovementAcceleration
+    return
 
 def moveLeft():
+    global Player
+    Player.VelocityY -= Player.playerMovementAcceleration
+    return
     PlayerAcceleration = 1
 
 def moveRight():
-    PlayerAcceleration = 1
+    global Player
+    Player.VelocityX += Player.playerMovementAcceleration
+    return
 
 def jump():
-    PlayerAcceleration = 1
+    global Player
+    Player.VelocityY = Player.jumpStrength
+    return
 
