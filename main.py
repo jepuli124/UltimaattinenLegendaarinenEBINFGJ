@@ -24,20 +24,18 @@ def main():
     PressedKeys = []
     clock = pygame.time.Clock()
     MAX_FPS = 30
-    while(Running):
-
-
+    
     while(running):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
         if(pygame.key.get_focused): #only do main loop while window focused
-
             PressedKeys = getInput() #actions to perform
             actionDoer()
         else:
             pass
+
         clock.tick(MAX_FPS)
 
 if(__name__ == "__main__"):
