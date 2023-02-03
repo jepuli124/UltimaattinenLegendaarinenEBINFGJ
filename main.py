@@ -12,6 +12,22 @@ PlayerVelocityX = 0.0
 PlayerVelocityY = 0.0
 PlayerPosX = 0.0
 playerPosY = 0.0
+PlayerAcceleration = 0.0
+
+def moveUp():
+    PlayerAcceleration = 1
+
+def moveDown():
+    PlayerAcceleration = 1
+
+def moveLeft():
+    PlayerAcceleration = 1
+
+def moveRight():
+    PlayerAcceleration = 1
+
+def jump():
+    PlayerAcceleration = 1
 
 PossibleActions = {"Up": moveUp(), "Down": moveDown(), "Left": moveLeft(), "Right": moveRight(), "Jump": jump(), "Quit": ()}
 
