@@ -1,4 +1,9 @@
 import pygame
+pygame.init()
+
+Screen = [1920, 1080]
+
+
 
 #älä muuta, kaikki kusee sitte
 MAX_FPS = 30 #frames per second
