@@ -2,35 +2,35 @@ import pygame
 pygame.init()
 
 Screen = [1920, 1080]
-Window = pygame.display.set_mode((Screen[0], Screen[1]))
 
 #älä muuta, kaikki kusee sitte
- #frames per second
+#frames per second
 CHARACTER_HEIGTH = 60 #pixels
+PLAYER_MOACCELERATION = 0.67 #pixels / tick^2
+PLAYER_MAX_X_VELOCITY = 10.0 #pixels / tick
+PLAYER_MAX_Y_VELOCITY = 20.0 #pixels / tick
 
-PlayerVelocityX = 0.0
-PlayerVelocityY = 0.0
-PlayerPosX = 0.0
-playerPosY = 0.0
+PLAYER_VELOCITY_X = 0.0
+PLAYER_VELOCITY_Y = 0.0
+PLAYER_POS_X = 0.0
+PLAYER_POS_Y = 0.0
 
-PossibleActions = {"Up": moveUp(), "Down": moveDown(), "Left": moveLeft(), "Right": moveRight(), "Jump": jump(), "Quit": ()}
+POSSIBLE_ACTIONS = {"Up": moveUp(), "Down": moveDown(), "Left": moveLeft(), "Right": moveRight(), "Jump": jump(), "Quit": ()}
 
-Running = True
+RUNNING = True
 
 #main loop
 
 def main():
-
+    Window = pygame.display.set_mode((Screen[0], Screen[1]))
     PressedKeys = []
     clock = pygame.time.Clock()
     MAX_FPS = 30
-    while(Running):
-
-
-    while(running):
+    
+    while(RUNNING):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
+                RUNNING = False
 
         if(pygame.key.get_focused): #only do main loop while window focused
 
@@ -38,6 +38,10 @@ def main():
             actionDoer()
         else:
             pass
+
+        
+
+
         clock.tick(MAX_FPS)
 
 if(__name__ == "__main__"):

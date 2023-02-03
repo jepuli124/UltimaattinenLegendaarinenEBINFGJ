@@ -1,12 +1,11 @@
-<<<<<<< HEAD
-def actionDoer(Actions):
-    global PossibleActions
-    for Action in Actions:
-        if Action in PossibleActions:
-            PossibleActions[Action]
-    return
-=======
 import pygame
+
+def actionDoer(Actions):
+    global POSSIBLE_ACTIONS
+    for Action in Actions:
+        if Action in POSSIBLE_ACTIONS:
+            POSSIBLE_ACTIONS[Action]
+    return
 
 def keys():
     Movement = []
@@ -28,4 +27,3 @@ def keys():
 def mouse():
     c1 = pygame.mouse.get_pressed(num_buttons=3)
     e1 = pygame.mouse.get_pos()
->>>>>>> 6bd2138faab39623e99ba4537eb51cf24b32e715
