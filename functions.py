@@ -28,7 +28,6 @@ def mouse():
     c1 = pygame.mouse.get_pressed(num_buttons=3)
     e1 = pygame.mouse.get_pos()
 
-<<<<<<< Updated upstream
 def moveUp():
     global Player
     Player.VelocityY -= Player.playerMovementAcceleration
@@ -55,5 +54,3 @@ def jump():
     Player.VelocityY = Player.jumpStrength
     return
 
-=======
->>>>>>> Stashed changes

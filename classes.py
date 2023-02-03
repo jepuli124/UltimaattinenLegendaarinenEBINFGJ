@@ -5,15 +5,9 @@ class ENTITY():
         self.characterHeightX = characterHeightX #pixels
         self.characterHeightY = characterHeightY #pixels
         self.playerMovementAcceleration = playerMovementAcceleration #pixels / tick^2
-<<<<<<< Updated upstream
         self.playerPosX = playerPosX
         self.playerPosY = playerPosY
         self.jumpStregth = 16 #velocity given when jumpig
-=======
-        self.playerPosX = playerPosX #pixels
-        self.playerPosY = playerPosY #pixels
-
->>>>>>> Stashed changes
 
 
 
