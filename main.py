@@ -4,25 +4,26 @@ import pygame
 MAX_FPS = 30 #frames per second
 CHARACTER_HEIGTH = 60 #pixels
 
-possibleActions = {"Up": moveUp(), "Down": moveDown(), "Left": moveLeft(), "Right": moveRight(), "Jump": jump(), "Quit": ()}
+PlayerVelocityX = 0.0
+PlayerVelocityY = 0.0
+PlayerPosX = 0.0
+playerPosY = 0.0
 
-running = True
+PossibleActions = {"Up": moveUp(), "Down": moveDown(), "Left": moveLeft(), "Right": moveRight(), "Jump": jump(), "Quit": ()}
+
+Running = True
 
 #main loop
 
 def main():
-    pressedKeys = []
-    PlayerVelocityX = 0.0
-    PlayerVelocityY = 0.0
-    while(running):
+    PressedKeys = []
+    
+    while(Running):
 
 
         if(pygame.key.get_focused): #only do main loop while window focused
-            pressedKeys = getInput() #actions to perform
-            for action in pressedKeys:
-            pass    
-                
-            
+            PressedKeys = getInput() #actions to perform
+            actionDoer()
         else:
             pass
 
