@@ -9,6 +9,7 @@ Screen = [1920, 1080]
 
 POSSIBLE_ACTIONS = {"Up": moveUp(), "Down": moveDown(), "Left": moveLeft(), "Right": moveRight(), "Jump": jump(), "Quit": ()}
 
+
 RUNNING = True
 
 #main loop
@@ -20,7 +21,9 @@ def main():
     Player = ENTITY.init(0.0, 0.0, 32, 60, 0.67, 0.0, 0.0)
     MAX_FPS = 30
     
+
     while(RUNNING):
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 RUNNING = False
@@ -30,8 +33,6 @@ def main():
             actionDoer(PressedKeys)
         else:
             pass
-
-        
 
 
         clock.tick(MAX_FPS)

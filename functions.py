@@ -27,4 +27,19 @@ def getInput():
 def mouse():
     c1 = pygame.mouse.get_pressed(num_buttons=3)
     e1 = pygame.mouse.get_pos()
-    
+
+def moveUp():
+    PlayerAcceleration = 1
+
+def moveDown():
+    PlayerAcceleration = 1
+
+def moveLeft():
+    PlayerAcceleration = 1
+
+def moveRight():
+    PlayerAcceleration = 1
+
+def jump():
+    PlayerAcceleration = 1
+
