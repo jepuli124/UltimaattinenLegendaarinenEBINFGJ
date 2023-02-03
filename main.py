@@ -1,4 +1,5 @@
 import pygame
+from functions import *
 pygame.init()
 
 Screen = [1920, 1080]
@@ -16,6 +17,7 @@ def main():
     Window = pygame.display.set_mode((Screen[0], Screen[1]))
     PressedKeys = []
     clock = pygame.time.Clock()
+    Player = ENTITY.init(0.0, 0.0, 32, 60, 0.67, 0.0, 0.0)
     MAX_FPS = 30
     
     while(RUNNING):
@@ -25,7 +27,7 @@ def main():
 
         if(pygame.key.get_focused): #only do main loop while window focused
             PressedKeys = getInput() #actions to perform
-            actionDoer()
+            actionDoer(PressedKeys)
         else:
             pass
 

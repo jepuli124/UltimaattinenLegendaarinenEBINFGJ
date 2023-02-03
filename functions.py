@@ -7,7 +7,7 @@ def actionDoer(Actions):
             POSSIBLE_ACTIONS[Action]
     return
 
-def keys():
+def getInput():
     Movement = []
     nappain = pygame.key.get_pressed()
     if nappain[pygame.K_ESCAPE]:
@@ -27,3 +27,4 @@ def keys():
 def mouse():
     c1 = pygame.mouse.get_pressed(num_buttons=3)
     e1 = pygame.mouse.get_pos()
+    
