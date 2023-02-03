@@ -1,5 +1,6 @@
 import pygame
 from functions import *
+from classes import * 
 pygame.init()
 
 Screen = [1920, 1080]
@@ -18,7 +19,7 @@ def main():
     Window = pygame.display.set_mode((Screen[0], Screen[1]))
     PressedKeys = []
     clock = pygame.time.Clock()
-    Player = ENTITY.init(0.0, 0.0, 32, 60, 0.67, 0.0, 0.0)
+    Player = ENTITY(0.0, 0.0, 32, 60, 0.67, 0.0, 0.0)
     MAX_FPS = 30
     
 
