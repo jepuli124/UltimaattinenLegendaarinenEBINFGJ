@@ -7,7 +7,8 @@ class ENTITY():
         self.playerMovementAcceleration = playerMovementAcceleration #pixels / tick^2
         self.playerPosX = playerPosX
         self.playerPosY = playerPosY
-        self.jumpStregth = 16 #velocity given when jumpig
+        self.jumpStregth = 4 #velocity given when jumpig
+        self.maxVelocity = 4 #pixels / tick
 
 
 
