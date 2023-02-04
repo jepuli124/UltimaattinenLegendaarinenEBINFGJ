@@ -1,26 +1,24 @@
 import pygame
 from functions import *
+from classes import * 
+from math import sqrt, ceil, floor
 pygame.init()
 
 Screen = [1920, 1080]
 
-#älä muuta, kaikki kusee sitte
-#frames per second
-
-POSSIBLE_ACTIONS = {"Up": moveUp(), "Down": moveDown(), "Left": moveLeft(), "Right": moveRight(), "Jump": jump(), "Quit": ()}
-
-
-RUNNING = True
-
 #main loop
-
 def main():
     Window = pygame.display.set_mode((Screen[0], Screen[1]))
     PressedKeys = []
+    Gravity = 1
     clock = pygame.time.Clock()
-    Player = ENTITY.init(0.0, 0.0, 32, 60, 0.67, 0.0, 0.0)
     MAX_FPS = 30
-    
+    Player = ENTITY(0.0, 0.0, 32, 60, 4, 0.0, 0.0)
+
+    CollisionDetectionRange = ceil((sqrt(Player.characterHeightX^2 + Player.characterHeightY^2) + Player.maxVelocity) / 32)
+
+    NewStage = True
+    CurrentStage = "testStage.txt"
 
     while(RUNNING):
 
@@ -29,8 +27,14 @@ def main():
                 RUNNING = False
 
         if(pygame.key.get_focused): #only do main loop while window focused
+            if(NewStage is True): #update level if flagged so
+                level = readLevelFromFile(CurrentStage)
+                NewStage = False
             PressedKeys = getInput() #actions to perform
-            actionDoer(PressedKeys)
+            Player = actionDoer(PressedKeys, Player)
+            if(Player.grounded is False):
+                Player.VelocityY += Gravity
+            Player = updatePlayerPos(Player, level, CollisionDetectionRange)
         else:
             pass
 
