@@ -5,11 +5,6 @@ pygame.init()
 
 Screen = [1920, 1080]
 
-#älä muuta, kaikki kusee sitte
-#frames per second
-
-RUNNING = True
-
 #main loop
 def main():
     Window = pygame.display.set_mode((Screen[0], Screen[1]))
@@ -17,6 +12,7 @@ def main():
     clock = pygame.time.Clock()
     MAX_FPS = 30
     Player = ENTITY(0.0, 0.0, 32, 60, 0.67, 0.0, 0.0)
+
 
     while(RUNNING):
 

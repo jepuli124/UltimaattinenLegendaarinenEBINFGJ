@@ -1,5 +1,23 @@
 import pygame
 
+def readLevelFromFile(fileToRead):
+    try:
+        file = open(fileToRead, 'r', encoding="UTF-8")
+        lines = file.readlines()
+        file.close()
+    except:
+        print("Erro while handling file '{}'".format(fileToRead))
+        pygame.quit()
+    level = []
+    i = -1
+    for line in lines:
+        i += 1
+        level.append([])
+        for character in line:
+            if(character != '\n'):
+                level[i].append(character)
+    return level
+
 def actionDoer(Actions, Player):
     for Action in Actions:
         if(Action == "Up"):
@@ -15,9 +33,6 @@ def actionDoer(Actions, Player):
         elif(Action == "quit"):
             pygame.quit()
     return Player
-
-            
-    return
 
 def getInput():
     Movement = []
@@ -40,30 +55,25 @@ def mouse():
     c1 = pygame.mouse.get_pressed(num_buttons=3)
     e1 = pygame.mouse.get_pos()
 
-def moveUp():
-    global Player
+def moveUp(Player):
     Player.VelocityY -= Player.playerMovementAcceleration
-    return
+    return Player
 
-def moveDown():
-    global Player
+def moveDown(Player):
     Player.VelocityY += Player.playerMovementAcceleration
-    return
+    return Player
 
-def moveLeft():
-    global Player
+def moveLeft(Player):
     Player.VelocityY -= Player.playerMovementAcceleration
-    return
+    return Player
 
-def moveRight():
-    global Player
+def moveRight(Player):
     Player.VelocityX += Player.playerMovementAcceleration
-    return
+    return Player
 
-def jump():
-    global Player
+def jump(Player):
     Player.VelocityY = Player.jumpStrength
-    return
+    return Player
 
 def detectEntityCollision(entity1, entity2):
     #entity1 on pelaajahahmo, jos se on osa tarkastusta
