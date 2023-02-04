@@ -3,31 +3,6 @@ import pygame
 import classes
 import random
 
-def readLevelFromFile(fileToRead):
-    try:
-        file = open(fileToRead, 'r', encoding="UTF-8")
-        lines = file.readlines()
-        file.close()
-    except:
-        print("Erro while handling file '{}'".format(fileToRead))
-        pygame.quit()
-    level = []
-    i = -1
-    for line in lines:
-        i += 1
-        level.append([])
-        for character in line:
-            if(character != '\n'):
-                level[i].append(character)
-    
-    longestLine = len(line[0])
-    for line in level:
-        if(len(line) > longestLine):
-            longestLine = line
-    for line in level:
-        for i in range(longestLine - len(line)):
-            line.append(' ')
-    return level
 
 
 def createPlayer(ListOfThem, sprite):
@@ -52,6 +27,21 @@ def createMBG(ListOfThem, ListOfSprites):
         ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, 1900), 0.0, ListOfSprites[3]))
     elif b == 5:
         ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, 1900), 0.0, ListOfSprites[4]))
+    return ListOfThem
+
+
+def createMBGStart(ListOfThem, ListOfSprites):
+    b = random.randint(0, 2000)
+    if 10 <= b <= 20:
+        ListOfThem.append(classes.MBG(random.randint(-10, 10)/20, 0, 0, 0, 0, random.randint(20, 1000), ListOfSprites[0]))
+    elif 30 <= b <= 40:
+        ListOfThem.append(classes.MBG(random.randint(-10, 10)/20, 0, 0, 0, 0, random.randint(20, 1000), ListOfSprites[1]))
+    elif 50 <= b <= 60:
+        ListOfThem.append(classes.MBG(random.randint(-10, 10)/20, 0, 0, 0, 0, random.randint(20, 1000), ListOfSprites[2]))
+    elif b == 4:
+        ListOfThem.append(classes.MBG(random.randint(-10, 10)/20, 0, 0, 0, 0, random.randint(20, 1000), ListOfSprites[3]))
+    elif b == 5:
+        ListOfThem.append(classes.MBG(random.randint(-10, 10)/20, 0, 0, 0, 0, random.randint(20, 1000), ListOfSprites[4]))
     return ListOfThem
 
 
@@ -154,8 +144,11 @@ def MovementReverseY(Entity):
     return Entity
 
 
-def randomMGBGenerator(ListOfThem, ListOfSprites):
-    ListOfThem = (createMBG(ListOfThem,  ListOfSprites))
+def randomMGBGenerator(ListOfThem, ListOfSprites, a):
+    if a == 0:
+        ListOfThem = (createMBG(ListOfThem,  ListOfSprites))
+    elif a == 1:
+        ListOfThem = (createMBGStart(ListOfThem, ListOfSprites))
     return ListOfThem
 
 
@@ -169,7 +162,7 @@ def EntityCheckList(list):
 
 
 def MBGCheckList(List, List2, Player):
-    List = (randomMGBGenerator(List, List2))
+    List = (randomMGBGenerator(List, List2, 0))
     counter = 0
     for Entity in List:
         movement(Entity)
@@ -184,7 +177,7 @@ def MBGCheckList(List, List2, Player):
 
 
 def MBGCheckListWP(List, List2):
-    # List = (randomMGBGenerator(List, List2))
+    List = (randomMGBGenerator(List, List2, 1))
     counter = 0
     for Entity in List:
         movement(Entity)

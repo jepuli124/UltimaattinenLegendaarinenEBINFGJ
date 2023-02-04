@@ -29,7 +29,7 @@ pygame.display.set_caption("MOST ULTIMATE LEGEDARY GAME THING EVER")
 font = pygame.font.Font('freesansbold.ttf', 150)
 starttext = font.render("Loading", True, (255, 255, 255))
 Window.blit(starttext, ((Screen[0] / 2) - 300, (Screen[1] / 2) - 75))
-pygame.display.flip()
+pygame.display.flip() 
 
 # Loading Loop
 
