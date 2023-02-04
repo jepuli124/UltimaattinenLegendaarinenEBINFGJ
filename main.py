@@ -41,7 +41,6 @@ def main():
     ListOfDraw = [ListOfSolid, ListOfEntities, ListOfMBG]
     createPlayer(ListOfEntities, cha)
 
-
     while RUNNING:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -58,7 +57,7 @@ def main():
             RUNNING = False
         mouse()
         ListOfEntities = EntityCheckList(ListOfEntities)
-        ListOfMBG = MBGCheckList(ListOfMBG, ListOfSBG)
+        ListOfMBG = MBGCheckList(ListOfMBG, ListOfSBG, ListOfEntities[0])
         drawWhole(ListOfDraw, Window)
         clock.tick(MAX_FPS)
 
