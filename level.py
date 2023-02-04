@@ -9,8 +9,9 @@ def readLevelFile(LevelFileName):
     x = -1
     y = -1
     for Line in Lines:
-        x += 1
+        y += 1
         for Char in Line:
+            x += 1
             if(Char.isspace() is False):
-                Level.append(TILE(Char))
+                Level.append(TILE(Char, x, y))
     return Level
