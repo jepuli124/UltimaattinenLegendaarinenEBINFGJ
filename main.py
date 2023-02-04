@@ -67,6 +67,7 @@ def main():
     ListOfDraw = [ListOfSolid, ListOfEntities, ListOfMBG]
     createPlayer(ListOfEntities, cha)
 
+
     while RUNNING:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -86,6 +87,7 @@ def main():
         ListOfMBG = MBGCheckList(ListOfMBG, ListOfSBG, ListOfEntities[0])
         pygame.draw.rect(Window, (0, 0, 0), ((0, 0), (1920, 1080)))  # BG
         drawWhole(ListOfDraw, Window)
+
         clock.tick(MAX_FPS)
 
 
