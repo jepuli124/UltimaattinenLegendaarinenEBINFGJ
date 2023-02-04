@@ -1,13 +1,41 @@
 import pygame
+import classes
+import random
+
+def initazition():
+    pygame.init()
+
+
+def createPlayer(ListOfThem, sprite):
+    ListOfThem.append(classes.PLAYER(0.0, 0.0, 32, 41, 2, 0.0, 0.0, sprite))
+    return ListOfThem
+
+def createEntity(ListOfThem, Vx, Vy, Ch, Cv, Ac, Px, Py, Sprite):
+    ListOfThem.append(classes.ENTITY(Vx, Vy, Ch, Cv, Ac, Px, Py, Sprite))
+    return ListOfThem
+
+def createMBG(ListOfThem, ListOfSprites):
+    b = random.randint(0, 50)
+    if b == 1:
+        ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/10, 0, 0, random.randint(0, 1920), 0.0, ListOfSprites[0]))
+    elif b == 2:
+        ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/10, 0, 0, random.randint(0, 1920), 0.0, ListOfSprites[1]))
+    elif b == 3:
+        ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/10, 0, 0, random.randint(0, 1920), 0.0, ListOfSprites[2]))
+    elif b == 4:
+        ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/10, 0, 0, random.randint(0, 1920), 0.0, ListOfSprites[3]))
+    elif b == 5:
+        ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/10, 0, 0, random.randint(0, 1920), 0.0, ListOfSprites[4]))
+    return ListOfThem
 
 def readLevelFromFile(fileToRead):
     try:
         file = open(fileToRead, 'r', encoding="UTF-8")
         lines = file.readlines()
-        file.close()
     except:
-        print("Erro while handling file '{}'".format(fileToRead))
+        print("Error while handling file '{}'".format(fileToRead))
         pygame.quit()
+        return "exit"
     level = []
     i = -1
     for line in lines:
@@ -24,10 +52,13 @@ def readLevelFromFile(fileToRead):
     for line in level:
         for i in range(longestLine - len(line)):
             line.append(' ')
+    file.close()
     return level
 
-def updatePlayerPos(Player, level, CollisionDetectionRange):
+
+def updatePlayerPos(Player, level):
     TestablePlayerPos = updatePlayerVelocity(Player)
+    CollisionDetectionRange = ceil((sqrt(Player.characterHeightX ^ 2 + Player.characterHeightY ^ 2) + Player.maxVelocity) / 32)
     i = 0
     j = 0
     for Line in level:
@@ -38,6 +69,7 @@ def updatePlayerPos(Player, level, CollisionDetectionRange):
         i += 1
     return Player
 
+
 def CharacterInsideTile(TestablePlayerPos, Player, y, x):
     if((TestablePlayerPos[0] <= y + 32) and (TestablePlayerPos[0] + Player.characterHeightX >= y)):
         if((TestablePlayerPos[1] <= x + 32) and (TestablePlayerPos[1] + Player.characterHeightY >= x)):
@@ -47,55 +79,95 @@ def CharacterInsideTile(TestablePlayerPos, Player, y, x):
 def updatePlayerVelocity(Player):
     return [Player.playerPosY + Player.VelocityY, Player.playerPosX + Player.VelocityX]
 
-def actionDoer(Actions, Player):
-    PossibleActions = {"Up": moveUp(Player), "Down": moveDown(Player), "Left": moveLeft(Player), "Right": moveRight(Player), "Jump": jump(Player)}
-    for Action in Actions:
-        if(Action in PossibleActions):
-            if(Action == "exit"):
-                pygame.quit()
-            Player = PossibleActions[Action]
-    return Player
 
-def getInput():
-    Movement = []
-    nappain = pygame.key.get_pressed()
-    if nappain[pygame.K_ESCAPE]:
-        return "exit"
-    if nappain[pygame.K_UP]:
-        Movement.append("Up")
-    if nappain[pygame.K_DOWN]:
-        Movement.append("Down")
-    if nappain[pygame.K_LEFT]:
-        Movement.append("Left")
-    if nappain[pygame.K_RIGHT]:
-        Movement.append("Right")
-    if nappain[pygame.K_SPACE]:
-        Movement.append("Space")
-    return Movement
+def getInput(Player):
+    key = pygame.key.get_pressed()
+    if key[pygame.K_ESCAPE]:
+        return 1
+    if key[pygame.K_UP]:
+        moveY(Player, 1)
+    if key[pygame.K_DOWN]:
+        moveY(Player, -1)
+    if key[pygame.K_LEFT]:
+        moveX(Player, -1)
+    if key[pygame.K_RIGHT]:
+        moveX(Player, 1)
+    if key[pygame.K_SPACE]:
+        moveY(Player, 1)
+
 
 def mouse():
     c1 = pygame.mouse.get_pressed(num_buttons=3)
     e1 = pygame.mouse.get_pos()
+    if c1:
+        return [True, e1]
+    else:
+        return [False, e1]
 
-def moveUp(Player):
-    Player.VelocityY -= Player.playerMovementAcceleration
-    return Player
 
-def moveDown(Player):
-    Player.VelocityY += Player.playerMovementAcceleration
-    return Player
 
-def moveLeft(Player):
-    Player.VelocityY -= Player.playerMovementAcceleration
-    return Player
 
-def moveRight(Player):
-    Player.VelocityX += Player.playerMovementAcceleration
-    return Player
+def moveY(Entity, Times):
+    Entity.VelocityY += Entity.MovementAcceleration * Times * (-1)
+    return Entity
 
-def jump(Player):
-    Player.VelocityY = Player.jumpStrength
-    return Player
+
+def moveX(Entity, Times):
+    Entity.VelocityX += Entity.MovementAcceleration * Times
+    return Entity
+
+
+def jump(Entity):
+    Entity.VelocityY = Entity.jumpStrength
+    return Entity
+
+
+def gravity(Entity):
+    if (Entity.grounded is False):
+        Entity.VelocityY += 1
+    return Entity
+
+def momentResistanece(Entity):
+    Entity.VelocityY = Entity.VelocityY * 0.9
+    Entity.VelocityX = Entity.VelocityX * 0.9
+
+
+def movement(entity):
+    entity.PosX += entity.VelocityX
+    if entity.PosX < 0:
+        entity.PosX = 0
+    elif entity.PosX > 1920-entity.characterHeightX:
+        entity.PosX = 1920-entity.characterHeightX
+    entity.PosY += entity.VelocityY
+    if entity.PosY < 0:
+        entity.PosY = 0
+    elif entity.PosY > 1080-entity.characterHeightY:
+        entity.PosY = 1080-entity.characterHeightY
+
+def randomMGBGenerator(ListOfThem, ListOfSprites):
+    ListOfThem = (createMBG(ListOfThem,  ListOfSprites))
+    return ListOfThem
+
+
+
+def EntityCheckList(list):
+    for Entity in list:
+        #gravity(Entity)
+        movement(Entity)
+        momentResistanece(Entity)
+    return list
+    #Player = updatePlayerPos(Player, level)
+
+def MBGCheckList(List, List2):
+    List = (randomMGBGenerator(List, List2))
+    counter = 0
+    for Entity in List:
+        movement(Entity)
+        Dest = Entity.destroy()
+        if Dest == 1:
+            List.pop(counter)
+        counter += 1
+    return List
 
 def detectEntityCollision(entity1, entity2):
     #entity1 on pelaajahahmo, jos se on osa tarkastusta
@@ -107,3 +179,11 @@ def detectEntityCollision(entity1, entity2):
                 return True, True
             return True, False
     return False, False
+
+
+def drawWhole(ListOfList, display):
+    pygame.draw.rect(display, (0, 0, 0), ((0, 0), (1920, 1080)))
+    for List in ListOfList:
+        for object in List:
+            display.blit(object.sprite, (object.PosX, object.PosY)) #Piirtää listanmukaisesti jokaisen objectin
+    pygame.display.flip()
