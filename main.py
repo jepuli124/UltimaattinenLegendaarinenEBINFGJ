@@ -3,9 +3,7 @@ from functions import *
 from classes import * 
 from math import sqrt, ceil, floor
 
-
-RUNNING = True
-
+pygame.init()
 
 # load Pictures:
 
@@ -17,21 +15,51 @@ leaf5 = pygame.image.load("./textures/leaf5.png")
 Axe = pygame.image.load("./textures/Axe.png")
 cha = pygame.image.load("./textures/päähahmo.png")
 
+startB = pygame.image.load("./textures/tausta.png")
+perhonen1 = pygame.image.load("./textures/perhonen1.png")
+perhonen2 = pygame.image.load("./textures/perhonen2.png")
+perhonen3 = pygame.image.load("./textures/perhonen3.png")
+head = pygame.image.load("./textures/GAME JAM head.png")
+head2 = pygame.image.load("./textures/GAME JAM head anime.png")
+
+
+Screen = [1920, 1080]
+Window = pygame.display.set_mode((Screen[0], Screen[1]), )
+pygame.display.set_caption("MOST ULTIMATE LEGEDARY GAME THING EVER")
+font = pygame.font.Font('freesansbold.ttf', 150)
+starttext = font.render("Loading", True, (255, 255, 255))
+Window.blit(starttext, ((Screen[0] / 2) - 300, (Screen[1] / 2) - 75))
+pygame.display.flip()
+
+# Loading Loop
+
+
+def startloop():
+    clocks = pygame.time.Clock()
+    MAX_FPS = 30
+    space = pygame.key.get_pressed()
+    ListOfEntities = []
+    ListOfSolid = []
+    ListOfMBG = []
+    ListOfSBG = [perhonen1, perhonen2, perhonen3, head, head2]
+    ListOfDraw = [ListOfSolid, ListOfEntities, ListOfMBG]
+    while not space[pygame.K_SPACE]:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                break
+        space = pygame.key.get_pressed()
+        drawWhole(ListOfDraw, Window)
+        pygame.display.flip()
+        clocks.tick(MAX_FPS)
+
+
+
+
 #main loop
 def main():
     RUNNING = True
-    pygame.init()
-    Screen = [1920, 1080]
-    Window = pygame.display.set_mode((Screen[0], Screen[1]), )
-    pygame.display.set_caption("MOST ULTIMATE LEGEDARY GAME THING EVER")
-    font = pygame.font.Font('freesansbold.ttf', 150)
-    starttext = font.render("Loading", True, (255, 255, 255))
-    Window.blit(starttext, ((Screen[0] / 2) - 300, (Screen[1] / 2) - 75))
-    pygame.display.flip()
-
     clock = pygame.time.Clock()
     MAX_FPS = 30
-    initazition()
     NewStage = True
     CurrentStage = "testLevel.txt"
     ListOfEntities = []
@@ -63,6 +91,7 @@ def main():
 
 
 if(__name__ == "__main__"):
+    startloop()
     main()
 
 pygame.quit()

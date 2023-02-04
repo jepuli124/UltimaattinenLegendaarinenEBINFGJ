@@ -3,10 +3,6 @@ import classes
 import random
 
 
-def initazition():
-    pygame.init()
-
-
 def createPlayer(ListOfThem, sprite):
     ListOfThem.append(classes.PLAYER(0.0, 0.0, 32, 41, 2, 0.0, 0.0, sprite))
     return ListOfThem
@@ -148,7 +144,6 @@ def EntityCheckList(list):
 def MBGCheckList(List, List2, Player):
     List = (randomMGBGenerator(List, List2))
     counter = 0
-    ListCopy = List
     for Entity in List:
         movement(Entity)
         Dest = Entity.destroy()
@@ -156,7 +151,6 @@ def MBGCheckList(List, List2, Player):
             List.pop(counter)
         if detectEntityCollision(Player, Entity):
             List.pop(counter)
-        ListCopy.pop(0)
         counter += 1
 
     return List
