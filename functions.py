@@ -1,23 +1,7 @@
+
 import pygame
 import classes
 import random
-
-def readLevelFile(LevelFileName):
-    try:
-        File = open(LevelFileName, 'r', encoding='UTF-8')
-        Lines = File.readlines()
-        File.close()
-    except:
-        pygame.quit()
-    Level = []
-    x = -1
-    y = -1
-    for Line in Lines:
-        x += 1
-        for Char in Line:
-            if(Char.isspace() is False):
-                Level.append(TILE(Char))
-    return Level
 
 def createPlayer(ListOfThem, sprite):
     ListOfThem.append(classes.PLAYER(0.0, 0.0, 32, 41, 2, 0.0, 0.0, sprite))
@@ -172,6 +156,19 @@ def MBGCheckList(List, List2, Player):
     return List
 
 
+def MBGCheckListWP(List, List2):
+    # List = (randomMGBGenerator(List, List2))
+    counter = 0
+    for Entity in List:
+        movement(Entity)
+        Dest = Entity.destroy()
+        if Dest == 1:
+            List.pop(counter)
+        counter += 1
+
+    return List
+
+
 def detectEntityCollision(entity1, entity2):
     # entity1 on pelaajahahmo, jos se on osa tarkastusta
     # katsotaan onko entity:t päällekkäin x-suunnassa
@@ -183,8 +180,8 @@ def detectEntityCollision(entity1, entity2):
 
 
 def drawWhole(ListOfList, display):
-    pygame.draw.rect(display, (0, 0, 0), ((0, 0), (1920, 1080)))
     for List in ListOfList:
         for Object in List:
             display.blit(Object.sprite, (Object.PosX, Object.PosY))  # Piirtää listanmukaisesti jokaisen objectin
     pygame.display.flip()
+
