@@ -1,6 +1,8 @@
 import pygame
+import ctypes
 from functions import *
 from classes import * 
+from level import * 
 from math import sqrt, ceil, floor
 
 pygame.init()
@@ -23,8 +25,10 @@ head = pygame.image.load("./textures/GAME JAM head.png")
 head2 = pygame.image.load("./textures/GAME JAM head anime.png")
 
 
-Screen = [1920, 1080]
-Window = pygame.display.set_mode((Screen[0], Screen[1]), )
+Screen = [480, 240]
+ctypes.windll.user32.SetProcessDPIAware()
+true_res = (ctypes.windll.user32.GetSystemMetrics(0),ctypes.windll.user32.GetSystemMetrics(1))
+Window = pygame.display.set_mode(true_res,pygame.FULLSCREEN)
 pygame.display.set_caption("MOST ULTIMATE LEGEDARY GAME THING EVER")
 font = pygame.font.Font('freesansbold.ttf', 150)
 starttext = font.render("Loading", True, (255, 255, 255))
@@ -61,7 +65,7 @@ def main():
     NewStage = True
     CurrentStage = "testLevel.txt"
     ListOfEntities = []
-    ListOfSolid = []
+    ListOfSolid = [readLevelFile(CurrentStage)]
     ListOfMBG = []
     ListOfSBG = [leaf1, leaf2, leaf3, leaf4, leaf5]
     ListOfDraw = [ListOfSolid, ListOfEntities, ListOfMBG]
