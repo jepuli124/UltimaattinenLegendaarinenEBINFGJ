@@ -11,6 +11,7 @@ class TILE:
             self.xCord = x
             self.yCord = y
 
+
 class ENTITY:
     def __init__(self, VelocityX, VelocityY, characterHeightX, characterHeightY, MovementAcceleration, PosX, PosY, sprite):
         self.VelocityX = VelocityX #pixels / tick
