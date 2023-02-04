@@ -1,4 +1,15 @@
-
+class TILE:
+    def __init__(self, char, x, y):
+        if(char == 'a'):
+            self.sprite = pygame.transform.scale(os.path.join('Assets', 'Level1' 'dirtPlaceholder.png'), (WIDTH,HEIGHT))
+            self.solid = True
+            self.xCord = x
+            self.yCord = y
+        elif(char == 'b'):
+            self.sprite = pygame.transform.scale(os.path.join('Assets', 'Level1' '.png'), (WIDTH,HEIGHT))
+            self.solid = True
+            self.xCord = x
+            self.yCord = y
 
 class ENTITY:
     def __init__(self, VelocityX, VelocityY, characterHeightX, characterHeightY, MovementAcceleration, PosX, PosY, sprite):
