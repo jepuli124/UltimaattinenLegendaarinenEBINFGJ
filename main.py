@@ -38,21 +38,19 @@ def startloop():
     clocks = pygame.time.Clock()
     MAX_FPS = 30
     space = pygame.key.get_pressed()
-    ListOfEntities = []
-    ListOfSolid = []
     ListOfMBG = []
     ListOfSBG = [perhonen1, perhonen2, perhonen3, head, head2]
-    ListOfDraw = [ListOfSolid, ListOfEntities, ListOfMBG]
+    ListOfDraw = [ListOfMBG]
     while not space[pygame.K_SPACE]:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 break
         space = pygame.key.get_pressed()
+        ListOfMBG = MBGCheckListWP(ListOfMBG, ListOfSBG)
+        Window.blit(startB, (0, 0))  # BG
         drawWhole(ListOfDraw, Window)
         pygame.display.flip()
         clocks.tick(MAX_FPS)
-
-
 
 
 #main loop
@@ -86,6 +84,7 @@ def main():
         mouse()
         ListOfEntities = EntityCheckList(ListOfEntities)
         ListOfMBG = MBGCheckList(ListOfMBG, ListOfSBG, ListOfEntities[0])
+        pygame.draw.rect(Window, (0, 0, 0), ((0, 0), (1920, 1080)))  # BG
         drawWhole(ListOfDraw, Window)
         clock.tick(MAX_FPS)
 
