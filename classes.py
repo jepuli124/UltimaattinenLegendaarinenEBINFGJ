@@ -1,15 +1,27 @@
+import pygame
+
 class TILE:
-    def __init__(self, char, x, y):
+    def __init__(self, char, x, y, Screen):
         if(char == 'a'):
-            self.sprite = pygame.transform.scale(os.path.join('Assets', 'Level1' 'dirtPlaceholder.png'), (WIDTH,HEIGHT))
+            self.sprite = pygame.transform.scale('./textures/tiili.png', Screen)
             self.solid = True
-            self.xCord = x
-            self.yCord = y
+            self.PosX = x
+            self.PosY = y
         elif(char == 'b'):
-            self.sprite = pygame.transform.scale(os.path.join('Assets', 'Level1' '.png'), (WIDTH,HEIGHT))
+            self.sprite = pygame.transform.scale('./textures/ruoho.png', Screen)
             self.solid = True
-            self.xCord = x
-            self.yCord = y
+            self.PosX = x
+            self.PosY = y
+        elif(char == 'c'):
+            self.sprite = pygame.transform.scale('./textures/keksi.png', Screen)
+            self.solid = True
+            self.PosX = x
+            self.PosY = y
+        else:
+            self.sprite = pygame.transform.scale('./textures/unknown.png', Screen)
+            self.solid = True
+            self.PosX = x
+            self.PosY = y
 
 
 class ENTITY:

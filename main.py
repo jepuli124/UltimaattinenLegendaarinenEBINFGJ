@@ -77,7 +77,7 @@ def main():
                 break
 
         #if(NewStage is True): #update level if flagged so
-        #    level = readLevelFromFile(CurrentStage)
+        #    level = readLevelFromFile(CurrentStage, Screen)
         #    if level == "exit":
         #        RUNNING = False
         #        break

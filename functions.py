@@ -48,30 +48,30 @@ def createMBG(ListOfThem, ListOfSprites, a):
     if a:
         if b == 1:
             ListOfThem.append(
-                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, main.Screen[1]-5), ListOfSprites[0]))
+                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, Screen[1]-5), ListOfSprites[0]))
         elif b == 2:
             ListOfThem.append(
-                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, main.Screen[1]-5), ListOfSprites[1]))
+                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, Screen[1]-5), ListOfSprites[1]))
         elif b == 3:
             ListOfThem.append(
-                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, main.Screen[1]-5), ListOfSprites[2]))
+                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, Screen[1]-5), ListOfSprites[2]))
         elif b == 4:
             ListOfThem.append(
-                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, main.Screen[1]-5), ListOfSprites[3]))
+                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, Screen[1]-5), ListOfSprites[3]))
         elif b == 5:
             ListOfThem.append(
-                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, main.Screen[1]-5), ListOfSprites[4]))
+                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, Screen[1]-5), ListOfSprites[4]))
     else:
         if b == 1:
-            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(10, main.Screen[0]-5), 0.0, ListOfSprites[0]))
+            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(10, Screen[0]-5), 0.0, ListOfSprites[0]))
         elif b == 2:
-            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, main.Screen[1]-5), 0.0, ListOfSprites[1]))
+            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, Screen[1]-5), 0.0, ListOfSprites[1]))
         elif b == 3:
-            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, main.Screen[1]-5), 0.0, ListOfSprites[2]))
+            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, Screen[1]-5), 0.0, ListOfSprites[2]))
         elif b == 4:
-            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, main.Screen[1]-5), 0.0, ListOfSprites[3]))
+            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, Screen[1]-5), 0.0, ListOfSprites[3]))
         elif b == 5:
-            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, main.Screen[1]-5), 0.0, ListOfSprites[4]))
+            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, Screen[1]-5), 0.0, ListOfSprites[4]))
     return ListOfThem
 
 
