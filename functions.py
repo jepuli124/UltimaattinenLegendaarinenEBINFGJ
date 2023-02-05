@@ -46,21 +46,22 @@ def createEntity(ListOfThem, Vx, Vy, Ch, Cv, Ac, Px, Py, Sprite):
 def createMBG(ListOfThem, ListOfSprites, a):
     b = random.randint(0, 20)
     if a:
-        if b == 1:
+        c = random.randint(0, 9001)
+        if 10 <= c <= 29:
             ListOfThem.append(
-                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, Screen[1]-5), ListOfSprites[0]))
-        elif b == 2:
+                classes.MBG((b)/2, random.randint(-1, 1) / 10, 0, 0, 1, random.randint(2, Screen[1]-5), ListOfSprites[0]))
+        elif 30 <= c <= 49:
             ListOfThem.append(
-                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, Screen[1]-5), ListOfSprites[1]))
-        elif b == 3:
+                classes.MBG((b)/2, random.randint(-1, 1) / 10, 0, 0, 1, random.randint(2, Screen[1]-5), ListOfSprites[1]))
+        elif 50 <= c <= 69:
             ListOfThem.append(
-                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, Screen[1]-5), ListOfSprites[2]))
-        elif b == 4:
+                classes.MBG((b)/2, random.randint(-1, 1) / 10, 0, 0, 1, random.randint(2, Screen[1]-5), ListOfSprites[2]))
+        elif c == 4:
             ListOfThem.append(
-                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, Screen[1]-5), ListOfSprites[3]))
-        elif b == 5:
+                classes.MBG((b)/ 20, random.randint(-1, 1) / 10, 0, 0, 1, random.randint(2, Screen[1]-5), ListOfSprites[3]))
+        elif c == 5:
             ListOfThem.append(
-                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, Screen[1]-5), ListOfSprites[4]))
+                classes.MBG((b)/ 20, random.randint(-1, 1) / 10, 0, 0, 1, random.randint(2, Screen[1]-5), ListOfSprites[4]))
     else:
         if b == 1:
             ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(10, Screen[0]-5), 0.0, ListOfSprites[0]))
