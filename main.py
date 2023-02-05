@@ -15,7 +15,8 @@ leaf3 = pygame.image.load("./textures/leaf3.png")
 leaf4 = pygame.image.load("./textures/leaf4.png")
 leaf5 = pygame.image.load("./textures/leaf5.png")
 Axe = pygame.image.load("./textures/Axe.png")
-cha = pygame.image.load("./textures/päähahmo.png")
+cha = pygame.image.load("./textures/päähahmo.png") 
+GameBackground = pygame.transform.scale(pygame.image.load("./textures/Forest2.png"), Screen)
 
 bigStartB = pygame.image.load("./textures/tausta.png")
 startB = pygame.transform.scale(bigStartB, Screen)
@@ -89,7 +90,7 @@ def main():
         mouse()
         ListOfEntities = EntityCheckList(ListOfEntities)
         ListOfMBG = MBGCheckList(ListOfMBG, ListOfSBG, ListOfEntities[0])
-        pygame.draw.rect(Window, (0, 0, 0), ((0, 0), (Screen[0], Screen[1])))  # BG
+        Window.blit(GameBackground, (0, 0)) # BG
         drawWhole(ListOfDraw, Window)
 
         clock.tick(MAX_FPS)
