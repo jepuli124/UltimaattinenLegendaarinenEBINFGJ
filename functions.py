@@ -191,6 +191,7 @@ def EntityCheckList(list):
 
 
 def MBGCheckList(List, List2, Player):
+    leafcounter = False
     List = (randomMGBGenerator(List, List2, 0))
     counter = 0
     for Entity in List:
@@ -200,9 +201,10 @@ def MBGCheckList(List, List2, Player):
             List.pop(counter)
         if detectEntityCollision(Player, Entity):
             List.pop(counter)
+            leafcounter = True
         counter += 1
 
-    return List
+    return List, leafcounter
 
 
 def MBGCheckListWP(List, List2):
@@ -213,6 +215,7 @@ def MBGCheckListWP(List, List2):
         Dest = Entity.destroy()
         if Dest == 1:
             List.pop(counter)
+
         counter += 1
 
     return List

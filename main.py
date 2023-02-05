@@ -62,6 +62,7 @@ def startloop():
 
 #main loop
 def main():
+    leafcounter = 0
     RUNNING = True
     clock = pygame.time.Clock()
     MAX_FPS = 30
@@ -73,7 +74,9 @@ def main():
     ListOfSBG = [leaf1, leaf2, leaf3, leaf4, leaf5]
     ListOfDraw = [ListOfSolid, ListOfEntities, ListOfMBG]
     createPlayer(ListOfEntities, cha)
+    sound = pygame.mixer.Sound("./textures/juominen.mp3")
 
+    font = pygame.font.Font('freesansbold.ttf', 75)
 
     while RUNNING:
         for event in pygame.event.get():
@@ -91,12 +94,20 @@ def main():
             RUNNING = False
         mouse()
         ListOfEntities = EntityCheckList(ListOfEntities)
-        ListOfMBG = MBGCheckList(ListOfMBG, ListOfSBG, ListOfEntities[0])
+        ListOfMBG, leaf = MBGCheckList(ListOfMBG, ListOfSBG, ListOfEntities[0])
+        if leaf:
+            leafcounter += 1
+            pygame.mixer.Sound.play(sound)
         Window.blit(GameBackground, (0, 0)) # BG
+        text = font.render("Score: " + str(leafcounter), True, (255, 255, 255))
+        Window.blit(text, (30, 50))
         drawWhole(ListOfDraw, Window)
 
         clock.tick(MAX_FPS)
-
+    soundU = pygame.mixer.Sound("./textures/KiitosOhjelmanKäytöstä.mp3")
+    pygame.mixer.Sound.play(soundU)
+    pygame.time.wait(4000)
+    print("kiitos ohjelman käytöstä.")
 
 def video():
     cap = cv2.VideoCapture('./textures/EBIGLEGENDFJG.mp4')
