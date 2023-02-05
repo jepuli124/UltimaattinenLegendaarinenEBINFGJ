@@ -7,6 +7,8 @@ pygame.init()
 
 # load Pictures:
 
+Screen = (480, 256)
+
 leaf1 = pygame.image.load("./textures/leaf1.png")
 leaf2 = pygame.image.load("./textures/leaf2.png")
 leaf3 = pygame.image.load("./textures/leaf3.png")
@@ -15,7 +17,8 @@ leaf5 = pygame.image.load("./textures/leaf5.png")
 Axe = pygame.image.load("./textures/Axe.png")
 cha = pygame.image.load("./textures/päähahmo.png")
 
-startB = pygame.image.load("./textures/tausta.png")
+bigStartB = pygame.image.load("./textures/tausta.png")
+startB = pygame.transform.scale(bigStartB, Screen)
 perhonen1 = pygame.image.load("./textures/perhonen1.png")
 perhonen2 = pygame.image.load("./textures/perhonen2.png")
 perhonen3 = pygame.image.load("./textures/perhonen3.png")
@@ -23,7 +26,7 @@ head = pygame.image.load("./textures/GAME JAM head.png")
 head2 = pygame.image.load("./textures/GAME JAM head anime.png")
 
 
-Screen = [1920, 1080]
+
 Window = pygame.display.set_mode((Screen[0], Screen[1]), )
 pygame.display.set_caption("MOST ULTIMATE LEGEDARY GAME THING EVER")
 font = pygame.font.Font('freesansbold.ttf', 150)

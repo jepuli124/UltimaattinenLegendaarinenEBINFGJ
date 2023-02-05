@@ -2,6 +2,8 @@
 import pygame
 import classes
 import random
+from classes import *
+from math import sqrt, ceil, floor
 
 def readLevelFromFile(fileToRead):
     try:
@@ -56,17 +58,45 @@ def createMBG(ListOfThem, ListOfSprites):
 
 
 def updatePlayerPos(Player, level): # Currently not used
-    TestablePlayerPos = updatePlayerVelocity(Player)
+    TestablePos = updatePlayerVelocity(Player)
     CollisionDetectionRange = ceil((sqrt(Player.characterHeightX ^ 2 + Player.characterHeightY ^ 2) + Player.maxVelocity) / 32)
     i = 0
     j = 0
     for Line in level:
         for Tile in Line:
-            if(CharacterInsideTile(TestablePlayerPos, Player, level, i ,j)):
-                Player = movePlayerToClearTile(TestablePlayerPos, Player, level)
+            OldPos = [Player.PosY, Player.PosX]
+            NewPos = TestablePos.copy()
+            FinalPlayerPos = TestablePos.copy()
+            while(CharacterInsideTile(FinalPlayerPos, Player, level, i ,j)):
+                TestPos = [round(average([NewPos[0], OldPos[0]])), round(average([NewPos[1], OldPos[1]]))]
+                if(CharacterInsideTile(TestPos, Player, level, i ,j)):
+                    OldPos = TestPos.copy()
+                elif(getDistance < 2):
+                    FinalPos = TestPos.copy
+                else:
+                    NewPos = TestPos.copy()
             j += 1
         i += 1
+    Player.PosX = FinalPos[0]
+    Player.PosY = FinalPos[1]
     return Player
+
+def average(ListOfNumbers):
+    Sum = 0
+    for Number in ListofNumbers:
+        Sum += Number
+    return Sum / len(ListOfNumbers)
+
+def getDistance(Pos1, Pos2):
+    if(Pos1[0]-Pos2[0] < 0):
+        y = (-1) * Pos1[0]-Pos2[0]
+    else:
+        y = Pos1[0]-Pos2[0]
+    if(Pos1[1]-Pos2[2] < 0):
+        x = (-1) * Pos1[1]-Pos2[1]
+    else:
+        x = Pos1[1]-Pos2[1]
+    return sqrt(y^2 + x^2)
 
 
 def CharacterInsideTile(TestablePlayerPos, Player, y, x):
