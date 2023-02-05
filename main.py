@@ -1,9 +1,10 @@
 import pygame
 from functions import *
-from classes import * 
+from classes import *
 from math import sqrt, ceil, floor
 import cv2
 import numpy as np
+
 
 pygame.init()
 
@@ -107,7 +108,6 @@ def main():
     soundU = pygame.mixer.Sound("./textures/KiitosOhjelmanKäytöstä.mp3")
     pygame.mixer.Sound.play(soundU)
     pygame.time.wait(4000)
-    print("kiitos ohjelman käytöstä.")
 
 def video():
     cap = cv2.VideoCapture('./textures/EBIGLEGENDFJG.mp4')
@@ -140,7 +140,7 @@ def video():
     # Closes all the frames
     cv2.destroyAllWindows()
 
-if(__name__ == "__main__"):
+if __name__ == "__main__":
     startloop()
     video()
     main()

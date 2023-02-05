@@ -1,10 +1,10 @@
-import main
 import pygame
 import classes
 import random
 from classes import *
 from main import *
 from math import sqrt, ceil, floor
+
 
 def createPlayer(ListOfThem, sprite):
     ListOfThem.append(classes.PLAYER(0.0, 0.0, 32, 41, 2, 0.0, 0.0, sprite))
