@@ -1,3 +1,5 @@
+import pygame
+
 def readLevelFile(LevelFileName):
     try:
         File = open(LevelFileName, 'r', encoding='UTF-8')
@@ -14,4 +16,5 @@ def readLevelFile(LevelFileName):
             x += 1
             if(Char.isspace() is False):
                 Level.append(TILE(Char, x, y))
+            
     return Level

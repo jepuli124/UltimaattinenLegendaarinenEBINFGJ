@@ -88,7 +88,7 @@ def main():
         mouse()
         ListOfEntities = EntityCheckList(ListOfEntities)
         ListOfMBG = MBGCheckList(ListOfMBG, ListOfSBG, ListOfEntities[0])
-        pygame.draw.rect(Window, (0, 0, 0), ((0, 0), (1920, 1080)))  # BG
+        pygame.draw.rect(Window, (0, 0, 0), ((0, 0), (Screen[0], Screen[1])))  # BG
         drawWhole(ListOfDraw, Window)
 
         clock.tick(MAX_FPS)
