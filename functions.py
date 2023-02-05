@@ -1,4 +1,4 @@
-
+import main
 import pygame
 import classes
 import random
@@ -42,18 +42,35 @@ def createEntity(ListOfThem, Vx, Vy, Ch, Cv, Ac, Px, Py, Sprite):
     return ListOfThem
 
 
-def createMBG(ListOfThem, ListOfSprites):
+def createMBG(ListOfThem, ListOfSprites, a):
     b = random.randint(0, 20)
-    if b == 1:
-        ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, 1900), 0.0, ListOfSprites[0]))
-    elif b == 2:
-        ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, 1900), 0.0, ListOfSprites[1]))
-    elif b == 3:
-        ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, 1900), 0.0, ListOfSprites[2]))
-    elif b == 4:
-        ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, 1900), 0.0, ListOfSprites[3]))
-    elif b == 5:
-        ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, 1900), 0.0, ListOfSprites[4]))
+    if a:
+        if b == 1:
+            ListOfThem.append(
+                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, main.Screen[1]-5), ListOfSprites[0]))
+        elif b == 2:
+            ListOfThem.append(
+                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, main.Screen[1]-5), ListOfSprites[1]))
+        elif b == 3:
+            ListOfThem.append(
+                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, main.Screen[1]-5), ListOfSprites[2]))
+        elif b == 4:
+            ListOfThem.append(
+                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, main.Screen[1]-5), ListOfSprites[3]))
+        elif b == 5:
+            ListOfThem.append(
+                classes.MBG(random.randint(-10, 10) / 10, b / 2, 0, 0, 0.0, random.randint(2, main.Screen[1]-5), ListOfSprites[4]))
+    else:
+        if b == 1:
+            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(10, main.Screen[0]-5), 0.0, ListOfSprites[0]))
+        elif b == 2:
+            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, main.Screen[1]-5), 0.0, ListOfSprites[1]))
+        elif b == 3:
+            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, main.Screen[1]-5), 0.0, ListOfSprites[2]))
+        elif b == 4:
+            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, main.Screen[1]-5), 0.0, ListOfSprites[3]))
+        elif b == 5:
+            ListOfThem.append(classes.MBG(random.randint(-10, 10)/10, b/2, 0, 0, random.randint(20, main.Screen[1]-5), 0.0, ListOfSprites[4]))
     return ListOfThem
 
 
@@ -184,8 +201,8 @@ def MovementReverseY(Entity):
     return Entity
 
 
-def randomMGBGenerator(ListOfThem, ListOfSprites):
-    ListOfThem = (createMBG(ListOfThem,  ListOfSprites))
+def randomMGBGenerator(ListOfThem, ListOfSprites, a):
+    ListOfThem = (createMBG(ListOfThem,  ListOfSprites, a))
     return ListOfThem
 
 
@@ -199,7 +216,7 @@ def EntityCheckList(list):
 
 
 def MBGCheckList(List, List2, Player):
-    List = (randomMGBGenerator(List, List2))
+    List = (randomMGBGenerator(List, List2, 0))
     counter = 0
     for Entity in List:
         movement(Entity)
@@ -214,7 +231,7 @@ def MBGCheckList(List, List2, Player):
 
 
 def MBGCheckListWP(List, List2):
-    # List = (randomMGBGenerator(List, List2))
+    List = (randomMGBGenerator(List, List2, 1))
     counter = 0
     for Entity in List:
         movement(Entity)
