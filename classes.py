@@ -54,7 +54,7 @@ class MBG:
         self.sprite = sprite
 
     def destroy(self):
-        if self.PosX <= 0 or self.PosX >= 1920:
+        if self.PosX <= 0 or self.PosX >= 480:
             return 1
-        elif self.PosY < 0 or self.PosY >= 1080:
+        elif self.PosY < 0 or self.PosY >= 256:
             return 1

@@ -19,15 +19,15 @@ cha = pygame.image.load("./textures/päähahmo.png")
 
 bigStartB = pygame.image.load("./textures/tausta.png")
 startB = pygame.transform.scale(bigStartB, Screen)
-perhonen1 = pygame.image.load("./textures/perhonen1.png")
-perhonen2 = pygame.image.load("./textures/perhonen2.png")
-perhonen3 = pygame.image.load("./textures/perhonen3.png")
-head = pygame.image.load("./textures/GAME JAM head.png")
-head2 = pygame.image.load("./textures/GAME JAM head anime.png")
+perhonen1 = pygame.transform.scale(pygame.image.load("./textures/perhonen1.png"), (32, 32))
+perhonen2 = pygame.transform.scale(pygame.image.load("./textures/perhonen2.png"), (32, 32))
+perhonen3 = pygame.transform.scale(pygame.image.load("./textures/perhonen3.png"), (32, 32))
+head = pygame.transform.scale(pygame.image.load("./textures/GAME JAM head.png"), (32, 32))
+head2 = pygame.transform.scale(pygame.image.load("./textures/GAME JAM head anime.png"), (32, 32))
 
 
 
-Window = pygame.display.set_mode((Screen[0], Screen[1]), )
+Window = pygame.display.set_mode((Screen[0], Screen[1]))
 pygame.display.set_caption("MOST ULTIMATE LEGEDARY GAME THING EVER")
 font = pygame.font.Font('freesansbold.ttf', 150)
 starttext = font.render("Loading", True, (255, 255, 255))
