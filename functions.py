@@ -3,6 +3,7 @@ import pygame
 import classes
 import random
 from classes import *
+from main import *
 from math import sqrt, ceil, floor
 
 def readLevelFromFile(fileToRead):
@@ -100,7 +101,7 @@ def updatePlayerPos(Player, level): # Currently not used
 
 def average(ListOfNumbers):
     Sum = 0
-    for Number in ListofNumbers:
+    for Number in ListOfNumbers:
         Sum += Number
     return Sum / len(ListOfNumbers)
 
@@ -182,13 +183,13 @@ def movement(entity):
     entity.PosX += entity.VelocityX
     if entity.PosX < 0:
         entity.PosX = 0
-    elif entity.PosX > 1920-entity.characterHeightX:
-        entity.PosX = 1920-entity.characterHeightX
+    elif entity.PosX > Screen[0]-entity.characterHeightX:
+        entity.PosX = Screen[0]-entity.characterHeightX
     entity.PosY += entity.VelocityY
     if entity.PosY < 0:
         entity.PosY = 0
-    elif entity.PosY > 1080-entity.characterHeightY:
-        entity.PosY = 1080-entity.characterHeightY
+    elif entity.PosY > Screen[1]-entity.characterHeightY:
+        entity.PosY = Screen[1]-entity.characterHeightY
 
 
 def MovementReverseX(Entity):
