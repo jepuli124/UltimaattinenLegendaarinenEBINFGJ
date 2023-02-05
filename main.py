@@ -27,9 +27,10 @@ head2 = pygame.transform.scale(pygame.image.load("./textures/GAME JAM head anime
 
 
 
+
 Window = pygame.display.set_mode((Screen[0], Screen[1]))
 pygame.display.set_caption("MOST ULTIMATE LEGEDARY GAME THING EVER")
-font = pygame.font.Font('freesansbold.ttf', 150)
+font = pygame.font.Font('freesansbold.ttf', 75)
 starttext = font.render("Loading", True, (255, 255, 255))
 Window.blit(starttext, ((Screen[0] / 2) - 300, (Screen[1] / 2) - 75))
 pygame.display.flip()

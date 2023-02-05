@@ -16,5 +16,5 @@ def readLevelFile(LevelFileName):
             x += 1
             if(Char.isspace() is False):
                 Level.append(TILE(Char, x, y))
-            
+            x = -1
     return Level
